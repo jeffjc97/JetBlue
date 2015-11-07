@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime
 
-with open('shortgetaway.csv', 'rb') as csvfile:
+with open('getaways.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile)
 	parse_list = list(reader)
 	for r in parse_list[1:]:
