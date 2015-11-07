@@ -7,7 +7,7 @@ multiples = 0;
 scroll = 500;
 
 var airports;
-url = "https://127.0.0.1:8000/query/"
+url = "https://ancient-fjord-1030.herokuapp.com/query/"
 
 chrome.storage.sync.get('airports', function(result) {
 		airports = result['airports'].join('&');
@@ -23,6 +23,8 @@ document.addEventListener("scroll", function() {
 				type: 'GET',
 				dataType: 'jsonp',
 				success: function(returned) {
+					console.log(airports);
+					console.log(returned);
 					$("<div class='jetblue-wrapper'>\
 					<div class='header-text'>JetBlue Travel Suggestions</div>\
 					<div class='jb jb-1'>\
