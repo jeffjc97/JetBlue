@@ -6,7 +6,8 @@
   "version": "1.0.0",
 
   "browser_action": {
-    "default_icon": "icon16.png"
+    "default_icon": "icon16.png",
+    "default_popup": "popup.html"
   },
 
   "background": {
@@ -26,7 +27,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.facebook.com/*"],
-      "css": ["newsfeed.css"],
+      "css": ["newsfeed.css","css/styles.css"],
       "js": ["jquery.min.js", "newsfeed.js"]
     }
   ]
