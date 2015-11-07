@@ -15,6 +15,22 @@ chrome.storage.sync.get('airports', function(result) {
 
 document.addEventListener("scroll", function() {
 	if($(document).scrollTop() > (multiples + 1) * scroll) {
+		var elm = document.getElementsByClassName("userContent");
+		Array.prototype.forEach.call(elm, function(element) {
+			//console.log(element.innerHTML);
+			var knwlInstance = new Knwl('english');
+			knwlInstance.init(element.innerHTML);
+			var places = knwlInstance.get('places');
+			for (var ii = 0; ii < places.length; ii++) {
+				for (var key in places[ii]) {
+					if (key !== 'found') {
+						if (key !== 'preview') {
+								console.log(key +" **** " + places[ii][key]);
+						}
+					}
+				}
+			}
+		});
 		last = $('._5jmm').last();
 		if(!last.next().hasClass('jetblue-wrapper')) {
 			console.log(airports);
