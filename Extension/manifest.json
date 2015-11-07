@@ -22,7 +22,8 @@
   "permissions": [
     "tabs", 
     "*://*.facebook.com/*",
-    "storage"
+    "storage",
+    "https://ajax.googleapis.com/"
   ],
 
   "content_scripts": [
