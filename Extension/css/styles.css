@@ -19,6 +19,11 @@
   height: 150px;
   width: 150px;
 }
+.image:hover {
+  opacity: 0.5;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
 .jb {
   float: left;
   margin-left: 2.5%;
