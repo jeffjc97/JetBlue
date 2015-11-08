@@ -227,9 +227,13 @@ def query(request, airports=None):
 		g = gl[r]
 		city = airport_dict.get(g.flight_origin)
 		# photo = flickr.walk(tag_mode='all', tags=city).next()
+		# service = build("customsearch", "v1",
+  #              developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
+
 		service = build("customsearch", "v1",
-               developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
+               developerKey="AIzaSyCIZMw1_rNCbfvSXYseuOJ1RwqotPdnUnU")
 		
+
 		res = service.cse().list(
 		    q=city,
 		    cx='016020790551409342918:ga4yedydubk',
