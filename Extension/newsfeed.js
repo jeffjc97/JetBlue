@@ -14,7 +14,7 @@ chrome.storage.sync.get('airports', function(result) {
 		airports = result['airports'].join('&');
 })
 
-document.addEventListener("scroll", function() {
+function injectAd(){
 	if($(document).scrollTop() > (multiples + 1) * scroll) {
 		$(".userContent").each(function() {
 			console.log($(this).innerHTML);
@@ -32,8 +32,14 @@ document.addEventListener("scroll", function() {
 								if(response.status == "success") {
 									result = response.result;
 									console.log(result);
-									console.log("closest");
-									console.log(obj.closest("._5jmm"));
+									// console.log("closest");
+									// console.log(obj.closest("._5jmm"));
+									for (var i = result.length - 1; i >= 0; i--) {
+										var price = "" + result[i].price;
+										if(price.indexOf(".") >= 0 && price.substring(price.indexOf("."),price.length).length == 2){
+											result[i].price = price.substring(0, price.indexOf("."));
+										}
+									};
 									$("<div class='jetblue-wrapper'>\
 									<div class='header-text'>JetBlue Travel Suggestions</div>\
 									<div class='jb jb-1'>\
@@ -137,12 +143,7 @@ document.addEventListener("scroll", function() {
 			// });
 	multiples++;
 	}
-});
-
-if (document.createEvent) { // W3C
-    var ev = document.createEvent('Event');
-    ev.initEvent('resize', true, true);
-    window.dispatchEvent(ev);
-} else { // IE
-    document.fireEvent('onresize');
 }
+
+document.addEventListener("scroll", injectAd);
+document.addEventListener("DOMContentLoaded", injectAd);

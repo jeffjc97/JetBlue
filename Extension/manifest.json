@@ -30,7 +30,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.facebook.com/*"],
-      "css": ["newsfeed.css","css/styles.css"],
+      "css": ["css/styles.css"],
       "js": ["jquery.min.js", "newsfeed.js", "externals/Knwl/dist/knwl.js"]
     }
   ]
