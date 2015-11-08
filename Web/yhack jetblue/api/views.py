@@ -225,13 +225,13 @@ def query(request, airports=None):
 
 	for r in rand:
 		g = gl[r]
-		city = airport_dict.get(g.flight_origin)
+		city = airport_dict.get(g.flight_dest)
 		# photo = flickr.walk(tag_mode='all', tags=city).next()
 		# service = build("customsearch", "v1",
   #              developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
 
 		service = build("customsearch", "v1",
-               developerKey="AIzaSyCIZMw1_rNCbfvSXYseuOJ1RwqotPdnUnU")
+               developerKey="AIzaSyBZG6kvjJdVqOdxmJsLvtt5VDAZFC4xFiQ")
 		
 
 		res = service.cse().list(
