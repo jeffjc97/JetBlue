@@ -55,17 +55,17 @@ function injectAd(){
 								$("<div class='jetblue-wrapper'>\
 									<div class='header-text'>JetBlue Travel Suggestions</div>\
 									<div id='" + result[0].g_id + "' class='jb jb-1'>\
-										<img class='image' src='" + result[0].img_url + "'>\
+										<a target='_blank' href='https://ancient-fjord-1030.herokuapp.com/details/" + result[0].g_id +"'><img class='image' src='" + result[0].img_url + "'></a>\
 										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
 										<div class='price'>as low as $"+result[0].price+"</div>\
 									</div>\
 									<div id='" + result[1].g_id + "' class='jb jb-2'>\
-										<img class='image' src='" + result[1].img_url + "'>\
+										<a target='_blank' href='https://ancient-fjord-1030.herokuapp.com/details/" + result[1].g_id +"'><img class='image' src='" + result[1].img_url + "'></a>\
 										<div class='loc'>"+result[1].city+" ("+result[1].date+")</div>\
 										<div class='price'>as low as $"+result[1].price+"</div>\
 									</div>\
 									<div id='" + result[2].g_id + "' class='jb jb-3'>\
-										<img class='image' src='" + result[2].img_url + "'>\
+										<a target='_blank' href='https://ancient-fjord-1030.herokuapp.com/details/" + result[2].g_id +"'><img class='image' src='" + result[2].img_url + "'></a>\
 										<div class='loc'>"+result[2].city+" ("+result[2].date+")</div>\
 										<div class='price'>as low as $"+result[2].price+"</div>\
 									</div>\
