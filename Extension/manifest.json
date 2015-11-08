@@ -11,7 +11,7 @@
   },
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js", "jquery.min.js"]
   },
 
   "icons": { 
@@ -23,7 +23,8 @@
     "tabs", 
     "*://*.facebook.com/*",
     "storage",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "https://ancient-fjord-1030.herokuapp.com/query/*"
   ],
 
   "content_scripts": [
