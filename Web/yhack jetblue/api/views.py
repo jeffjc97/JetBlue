@@ -215,14 +215,21 @@ def query(request, airports=None):
 
 	nrand = min(gl.count(), 3)
 	rand = random.sample(range(0, gl.count()), nrand)
+
+	# service = build("customsearch", "v1",
+ #               developerKey="AIzaSyB6d0vUqwi5_geOPwcaY_FTfFkhLM97UmA")
+
+	# service = build("customsearch", "v1",
+ #               developerKey="AIzaSyAkrWrt0p8wWqil7lue7oVrzI-r8XDXW60")
+
+
 	for r in rand:
 		g = gl[r]
 		city = airport_dict.get(g.flight_origin)
 		# photo = flickr.walk(tag_mode='all', tags=city).next()
-
 		service = build("customsearch", "v1",
-               developerKey="AIzaSyB6d0vUqwi5_geOPwcaY_FTfFkhLM97UmA")
-
+               developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
+		
 		res = service.cse().list(
 		    q=city,
 		    cx='016020790551409342918:ga4yedydubk',
