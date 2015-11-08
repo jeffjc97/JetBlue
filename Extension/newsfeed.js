@@ -44,20 +44,17 @@ function injectAd(){
 									<div class='header-text'>JetBlue Travel Suggestions</div>\
 									<div class='jb jb-1'>\
 										<img class='image' src='" + result[0].img_url + "'>\
-										<div class='loc'>"+result[0].city+"</div>\
-										<div class='date'>"+result[0].date+"</div>\
-										<div class='price'>No more than $"+result[0].price+"</div>\
+										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
+										<div class='price'>as low as $"+result[0].price+"</div>\
 									</div>\
 									<div class='jb jb-2'>\
 										<img class='image' src='" + result[0].img_url + "'>\
-										<div class='loc'>"+result[0].city+"</div>\
-										<div class='date'>"+result[0].date+"</div>\
+										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
 										<div class='price'>as low as $"+result[0].price+"</div>\
 									</div>\
 									<div class='jb jb-3'>\
 										<img class='image' src='" + result[0].img_url + "'>\
-										<div class='loc'>"+result[0].city+"</div>\
-										<div class='date'>"+result[0].date+"</div>\
+										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
 										<div class='price'>as low as $"+result[0].price+"</div>\
 									</div>\
 									</div>").insertAfter(obj.closest("._5jmm"));
