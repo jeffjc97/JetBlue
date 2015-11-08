@@ -14,15 +14,10 @@ Retrieves results from the database based on user preferences.
 */
 var url = "https://ancient-fjord-1030.herokuapp.com/query/";
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	o = request.option
 	a = request.airport
-	if (a == null || a== undefined) {
-		url = url + 'option/' + o;
-	}else{
-		url = url + a + '/option/' + o;
-	}
+	o = request.option
 	$.ajax({
-	    url: url,
+	    url: url + a + '/option/' + o,
 		type: 'GET',
 	    success: function(result) {
 	    	sendResponse({status:"success", result:result})

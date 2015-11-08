@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		airports = result['airports'];
 		console.log(airports);
 		if(airports != undefined) {
-			$(".js-selector").select2().select2("val", airports);
 		}
 		else {
-			$(".js-selector").select2();
+			airports = ["BOS"];
 		}
+		$(".js-selector").select2().select2("val", airports);
 	});
 
 	chrome.storage.sync.get('option', function(result) {
