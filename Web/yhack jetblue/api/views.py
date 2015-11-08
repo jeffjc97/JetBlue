@@ -213,7 +213,7 @@ def query(request, airports=None):
 	# api_secret = '5172eba0b3d63d4f'
 	# flickr = flickrapi.FlickrAPI(api_key, api_secret)
 
-	nrand = min(gl.count(), 3)
+	nrand = min(gl.count(), 1)
 	rand = random.sample(range(0, gl.count()), nrand)
 
 	# service = build("customsearch", "v1",
@@ -225,13 +225,13 @@ def query(request, airports=None):
 
 	for r in rand:
 		g = gl[r]
-		city = airport_dict.get(g.flight_origin)
+		city = airport_dict.get(g.flight_dest)
 		# photo = flickr.walk(tag_mode='all', tags=city).next()
 		# service = build("customsearch", "v1",
   #              developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
 
 		service = build("customsearch", "v1",
-               developerKey="AIzaSyCIZMw1_rNCbfvSXYseuOJ1RwqotPdnUnU")
+               developerKey="AIzaSyBZG6kvjJdVqOdxmJsLvtt5VDAZFC4xFiQ")
 		
 
 		res = service.cse().list(
