@@ -214,17 +214,17 @@ def query(request, airports=None, option=0):
 	getaways = []
 
 	# random
+	num = min(gl.count(), 3)
 	if int(option) == 0:
-		nrand = min(gl.count(), 1)
-		rand = random.sample(range(0, gl.count()), nrand)
+		rand = random.sample(range(0, gl.count()), num)
 		for r in rand:
 			getaways.append(gl[r])
 	# cheap
 	elif int(option) == 1:
-		getaways = list(gl.order_by('jetblue_price')[:1])
+		getaways = list(gl.order_by('jetblue_price')[:num])
 	# discounted
 	else:
-		getaways = list(gl.order_by('-savings')[:1])
+		getaways = list(gl.order_by('-savings')[:num])
 
 	for g in getaways:
 		city = airport_dict.get(g.flight_dest)
@@ -232,19 +232,19 @@ def query(request, airports=None, option=0):
   #              developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
 
 		service = build("customsearch", "v1",
-               developerKey="AIzaSyBZG6kvjJdVqOdxmJsLvtt5VDAZFC4xFiQ")
+               developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
 		
 		res = service.cse().list(
 		    q=city,
 		    cx='016020790551409342918:ga4yedydubk',
 		    searchType='image',
-		    num=1,
+		    num=5,
 		    imgType='photo',
 		    fileType='jpg',
 		    imgSize="large"
 		).execute()
 
-		url = res['items'][0]['link']
+		url = res['items'][random.randint(0,4)]['link']
 
 		flight_dict = {'img_url':url, 'city':city, 'price':g.jetblue_price, 'date': g.check_in.strftime('%m/%d'), 'savings':g.savings}
 		flights.append(flight_dict)

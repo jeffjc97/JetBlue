@@ -7,11 +7,16 @@ multiples = 0;
 scroll = 1500;
 req = false;
 
+var option;
 var airports;
 url = "https://ancient-fjord-1030.herokuapp.com/query/"
 
 chrome.storage.sync.get('airports', function(result) {
 		airports = result['airports'].join('&');
+})
+
+chrome.storage.sync.get('option', function(result) {
+		option = result['option'];
 })
 
 function injectAd(){
@@ -27,7 +32,7 @@ function injectAd(){
 						console.log(key +" **** " + places[ii][key]);
 						req = true;
 						obj = $(this);
-						chrome.runtime.sendMessage({airport:airports}, function(response) { 
+						chrome.runtime.sendMessage({airport:airports, option:option}, function(response) { 
 							if(response.status == "success") {
 								result = response.result;
 								console.log(result);
@@ -47,14 +52,14 @@ function injectAd(){
 										<div class='price'>as low as $"+result[0].price+"</div>\
 									</div>\
 									<div class='jb jb-2'>\
-										<img class='image' src='" + result[0].img_url + "'>\
-										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
-										<div class='price'>as low as $"+result[0].price+"</div>\
+										<img class='image' src='" + result[1].img_url + "'>\
+										<div class='loc'>"+result[1].city+" ("+result[1].date+")</div>\
+										<div class='price'>as low as $"+result[1].price+"</div>\
 									</div>\
 									<div class='jb jb-3'>\
-										<img class='image' src='" + result[0].img_url + "'>\
-										<div class='loc'>"+result[0].city+" ("+result[0].date+")</div>\
-										<div class='price'>as low as $"+result[0].price+"</div>\
+										<img class='image' src='" + result[2].img_url + "'>\
+										<div class='loc'>"+result[2].city+" ("+result[2].date+")</div>\
+										<div class='price'>as low as $"+result[2].price+"</div>\
 									</div>\
 									</div>").insertAfter(obj.closest("._5jmm"));
 							}
