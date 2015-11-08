@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "JetBlue Deals",
-  "description": "Get the best deals on trips to places you've always wanted to go!",
+  "description": "Get the best deals on trips to places you've always wanted to go to!",
   "version": "1.0.0",
 
   "browser_action": {

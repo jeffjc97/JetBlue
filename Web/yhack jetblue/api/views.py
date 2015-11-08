@@ -196,6 +196,25 @@ airport_dict = {
 	'CYS':'Cheyenne Wyoming',
 	'JAC':'Jackson Hole Wyoming',
 	'RKS':'Rock Springs Wyoming'
+	'SJU':'Puerto Rico',
+	'BGI':'Barbados',
+	'SDQ':'Dominican Republic',
+	'CUN':'Cancun',
+	'SXM':'Saint Maarten',
+	'AUA':'Aruba',
+	'UVF':'Saint Lucia',
+	'NAS':'Bahamas',
+	'CUR':'Curacao',
+	'PLS':'Providenciales',
+	'MBJ':'Jamaica',
+	'LIR':'Costa Rica',
+	'BDA':'Bermuda',
+	'GCM':'Cayman Islands',
+	'GND':'Grenada',
+	'POP':'Dominican Republic',
+	'PUJ':'Dominican Republic',
+	'AZS':'Dominican Republic',
+	'LRM':'Dominican Republic'
 	}
 
 class DecimalEncoder(json.JSONEncoder):
