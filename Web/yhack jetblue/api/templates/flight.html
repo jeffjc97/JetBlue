@@ -4,64 +4,17 @@
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-        <title>SUCK MY ASS </title>
+        <title>JetBlue Trip Details</title>
         <style type="text/css">
-        	html, body {
-        		height: 100%;
-   				max-width: 100%;
-			}
-			html{
-				overflow-x:hidden;
-				overflow-y: hidden;
-			}
-        	.main-header{
-        		display: block;
-        		width: 968px;
-        		margin: 0 auto;
-        		min-width: 968px;
+        	body {
+        		 background-image: url("http://dmhdwallpapers.com/wp-content/uploads/2015/02/travel-holidays-laptop-hd-backgrounds.jpg");
         	}
-        	#bgHolder {
-			    margin: 0 auto;
-			    min-width: 962px;
-			    pointer-events: none;
-			    width: 100%;
-			    height:0px;
-			}
-			.logo img {
-			    margin: -12px 0px -11px 18px;
-			    height: 55px;
-			    margin-top: 21px;
-			}
-			img {
-			    border: 0;
-			    -ms-interpolation-mode: bicubic;
-			    vertical-align: middle;
-			}
-			.list-group{
-
-			}
-			#header-row{
-				height: 150px;
-			}
-			#right-side{
-				margin-top: -50px;
-				height: 100%;
-			}
-			#details{
-				vertical-align: middle;
-			}
-			#right-image{
-				vertical-align: center;
-			}
-			.vertical-center {
-  				position: relative;
-  				top: 50%;
-  				transform: translateY(-50%);
-			}
-			#book-it{
-				margin: 0 auto;
-			}
+    		.info-wrapper
+    		{
+    	 	    width: 30%;
+			    margin-top: 5%;
+			    margin-left: 35%;
+        	}
         </style>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -80,35 +33,19 @@
 
 	</head>
 	<body>
-		<div id="bgHolder">
-			<img src="{% static "api/bg-header.jpg" %}" alt="Header"/>
-		</div>
-		<div class="main-header">
-			<a href="#" class="logo">
-				<img src="{% static "api/jetblue-white-reg.png" %}" alt="JetBlue">
-			</a>
-		</div>
-		<div class="col-md-4">
-			<div class="row" id="header-row">
-			</div>
-				<div class="well well-lg">
-					<ul class="list-group" id="details">
-					  <li class="list-group-item">{{flight_origin}}</li>
-					  <li class="list-group-item">{{flight_dest}}</li>
-					  <li class="list-group-item">{{hotel}}</li>
-					  <li class="list-group-item">{{nights}}</li>
-					  <li class="list-group-item">{{check_in}}</li>
-					  <li class="list-group-item">{{check_out}}</li>
-					  <li class="list-group-item">{{expedia_price}}</li>
-					  <li class="list-group-item">{{jetblue_price}}</li>
-					  <li class="list-group-item">{{savings}}</li>
-					  <li class="list-group-item">{{advance_weeks}}</li>
-				</ul>
-				<button class="btn btn-lg btn-success" id="book-it">Book it now!</button>
-				</div>
-		</div>
-		<div class="col-md-8" id="right-side">
-			<img src="./img/pano2.jpg" class="img-responsive vertical-center" alt="Destination Image" id="right-image"/>
+		<div class="info-wrapper well well-lg">
+			<ul class="list-group" id="details">
+			  <li class="list-group-item">Departing from: {{flight_origin}}</li>
+			  <li class="list-group-item">Arriving at: {{flight_dest}}</li>
+			  <li class="list-group-item">Hotel: {{hotel}}</li>
+			  <li class="list-group-item">Nights: {{nights}}</li>
+			  <li class="list-group-item">Check-in: {{check_in}}</li>
+			  <li class="list-group-item">Check-out: {{check_out}}</li>
+			  <li class="list-group-item">Expedia Price: ${{expedia_price}}</li>
+			  <li class="list-group-item">JetBlue Price: ${{jetblue_price}}</li>
+			  <li class="list-group-item">Percent Savings: {{savings}}%</li>
+			</ul>
+		<button class="btn btn-lg btn-success" onclick="location.href='http://jetblue.com';" id="book-it">Book it now!</button>
 		</div>
 	</body>
 </html>

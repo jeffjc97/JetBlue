@@ -195,7 +195,7 @@ airport_dict = {
 	'CPR':'Casper Wyoming',
 	'CYS':'Cheyenne Wyoming',
 	'JAC':'Jackson Hole Wyoming',
-	'RKS':'Rock Springs Wyoming'
+	'RKS':'Rock Springs Wyoming',
 	'SJU':'Puerto Rico',
 	'BGI':'Barbados',
 	'SDQ':'Dominican Republic',
