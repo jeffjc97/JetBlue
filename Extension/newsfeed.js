@@ -8,10 +8,14 @@ scroll = 1500;
 req = false;
 
 var airports;
+var option;
 url = "https://ancient-fjord-1030.herokuapp.com/query/"
 
 chrome.storage.sync.get('airports', function(result) {
 		airports = result['airports'].join('&');
+})
+chrome.storage.sync.get('option', function(result) {
+		option = result['option'];
 })
 
 function injectAd(){
@@ -28,7 +32,7 @@ function injectAd(){
 							console.log(key +" **** " + places[ii][key]);
 							req = true;
 							obj = $(this);
-							chrome.runtime.sendMessage({airport:airports}, function(response) { 
+							chrome.runtime.sendMessage({airport:airports, option:option}, function(response) { 
 								if(response.status == "success") {
 									result = response.result;
 									console.log(result);

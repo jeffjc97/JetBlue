@@ -204,36 +204,36 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         return super(DecimalEncoder, self).default(o)
 
-def query(request, airports=None):
+def query(request, airports=None, option=0):
 	airport_list = airports.split('&')
-	gl = Getaway.objects.filter(flight_origin__in=airport_list)
+	if airports != None:
+		gl = Getaway.objects.filter(flight_origin__in=airport_list)
+	else:
+		gl = Getaway.objects.all()
 	flights = []
+	getaways = []
 
-	# api_key = 'd9c544f1c97ae823440f871289adbfe1'
-	# api_secret = '5172eba0b3d63d4f'
-	# flickr = flickrapi.FlickrAPI(api_key, api_secret)
+	# random
+	if int(option) == 0:
+		nrand = min(gl.count(), 1)
+		rand = random.sample(range(0, gl.count()), nrand)
+		for r in rand:
+			getaways.append(gl[r])
+	# cheap
+	elif int(option) == 1:
+		getaways = list(gl.order_by('jetblue_price')[:1])
+	# discounted
+	else:
+		getaways = list(gl.order_by('-savings')[:1])
 
-	nrand = min(gl.count(), 1)
-	rand = random.sample(range(0, gl.count()), nrand)
-
-	# service = build("customsearch", "v1",
- #               developerKey="AIzaSyB6d0vUqwi5_geOPwcaY_FTfFkhLM97UmA")
-
-	# service = build("customsearch", "v1",
- #               developerKey="AIzaSyAkrWrt0p8wWqil7lue7oVrzI-r8XDXW60")
-
-
-	for r in rand:
-		g = gl[r]
+	for g in getaways:
 		city = airport_dict.get(g.flight_dest)
-		# photo = flickr.walk(tag_mode='all', tags=city).next()
 		# service = build("customsearch", "v1",
   #              developerKey="AIzaSyAwHjNitnvZDlGjz66mXJsD4GUEd4BUgEs")
 
 		service = build("customsearch", "v1",
                developerKey="AIzaSyBZG6kvjJdVqOdxmJsLvtt5VDAZFC4xFiQ")
 		
-
 		res = service.cse().list(
 		    q=city,
 		    cx='016020790551409342918:ga4yedydubk',
