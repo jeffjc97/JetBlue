@@ -265,7 +265,12 @@ def query(request, airports=None, option=0):
 
 		url = res['items'][random.randint(0,4)]['link']
 
-		flight_dict = {'img_url':url, 'city':city, 'price':g.jetblue_price, 'date': g.check_in.strftime('%m/%d'), 'savings':g.savings}
+		flight_dict = {'g_id':g.id, 'img_url':url, 'city':city, 'price':g.jetblue_price, 'date': g.check_in.strftime('%m/%d'), 'savings':g.savings}
 		flights.append(flight_dict)
 	response = HttpResponse(json.dumps(flights, cls=DecimalEncoder), content_type="application/json")
 	return response
+
+def details(request, id=None):
+	g = Getaway.objects.get(id=id)
+	return render(request, 'flight.html', {"flight_origin": g.flight_origin, "flight_dest": g.flight_dest, "hotel": g.hotel, "nights": g.nights, "check_in": g.check_in, "check_out": g.check_out, 'expedia_price': g.expedia_price, 'jetblue_price': g.jetblue_price, 'savings': g.savings, 'advance_weeks': g.advance_weeks})
+

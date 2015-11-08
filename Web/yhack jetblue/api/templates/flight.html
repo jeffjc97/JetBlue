@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -61,6 +63,9 @@
 				margin: 0 auto;
 			}
         </style>
+
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
        	<!-- Latest compiled and minified CSS -->
@@ -71,14 +76,16 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
 	</head>
 	<body>
 		<div id="bgHolder">
-			<img src="./img/bg-header.jpg"/>
+			<img src="{% static "api/bg-header.jpg" %}" alt="Header"/>
 		</div>
 		<div class="main-header">
 			<a href="#" class="logo">
-				<img src="./img/jetblue-white-reg.png" alt="JetBlue">
+				<img src="{% static "api/jetblue-white-reg.png" %}" alt="JetBlue">
 			</a>
 		</div>
 		<div class="col-md-4">
@@ -86,11 +93,16 @@
 			</div>
 				<div class="well well-lg">
 					<ul class="list-group" id="details">
-					  <li class="list-group-item">Cras justo odio</li>
-					  <li class="list-group-item">Dapibus ac facilisis in</li>
-					  <li class="list-group-item">Morbi leo risus</li>
-					  <li class="list-group-item">Porta ac consectetur ac</li>
-					  <li class="list-group-item">Vestibulum at eros</li>
+					  <li class="list-group-item">{{flight_origin}}</li>
+					  <li class="list-group-item">{{flight_dest}}</li>
+					  <li class="list-group-item">{{hotel}}</li>
+					  <li class="list-group-item">{{nights}}</li>
+					  <li class="list-group-item">{{check_in}}</li>
+					  <li class="list-group-item">{{check_out}}</li>
+					  <li class="list-group-item">{{expedia_price}}</li>
+					  <li class="list-group-item">{{jetblue_price}}</li>
+					  <li class="list-group-item">{{savings}}</li>
+					  <li class="list-group-item">{{advance_weeks}}</li>
 				</ul>
 				<button class="btn btn-lg btn-success" id="book-it">Book it now!</button>
 				</div>
