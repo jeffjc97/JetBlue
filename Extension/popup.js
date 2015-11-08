@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function(){
 		console.log(airports);
 		if(airports != undefined) {
 			$(".js-selector").select2().select2("val", airports);
-		}else{
+		}
+		else {
 			$(".js-selector").select2();
 		}
 	});
