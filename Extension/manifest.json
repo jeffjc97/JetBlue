@@ -31,7 +31,7 @@
     {
       "matches": ["*://*.facebook.com/*"],
       "css": ["css/styles.css"],
-      "js": ["jquery.min.js", "newsfeed.js", "externals/Knwl/dist/knwl.js"]
+      "js": ["jquery.min.js", "externals/Knwl/dist/knwl.js", "newsfeed.js"]
     }
   ]
 }
