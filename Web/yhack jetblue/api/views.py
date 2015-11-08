@@ -235,7 +235,7 @@ def query(request, airports=None):
 
 		url = res['items'][0]['link']
 
-		flight_dict = {'img_url':url, 'flight_origin':g.flight_origin, 'flight_dest':g.flight_dest, 'savings':g.savings}
+		flight_dict = {'img_url':url, 'city':city, 'price':g.jetblue_price, 'date': g.check_in.strftime('%m/%d/%Y'), 'savings':g.savings}
 		flights.append(flight_dict)
 	response = HttpResponse(json.dumps(flights, cls=DecimalEncoder), content_type="application/json")
 	return response
