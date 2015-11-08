@@ -272,5 +272,11 @@ def query(request, airports=None, option=0):
 
 def details(request, id=None):
 	g = Getaway.objects.get(id=id)
-	return render(request, 'flight.html', {"flight_origin": g.flight_origin, "flight_dest": g.flight_dest, "hotel": g.hotel, "nights": g.nights, "check_in": g.check_in, "check_out": g.check_out, 'expedia_price': g.expedia_price, 'jetblue_price': g.jetblue_price, 'savings': g.savings, 'advance_weeks': g.advance_weeks})
+	expedia_price = str(g.expedia_price)
+	if expedia_price.rfind('.') != -1:
+		expedia_price = expedia_price[:expedia_price.rfind('.')]
+	jetblue_price = str(g.jetblue_price)
+	if jetblue_price.rfind('.') != -1:
+		jetblue_price = jetblue_price[:jetblue_price.rfind('.')]
+	return render(request, 'flight.html', {"flight_origin": g.flight_origin, "flight_dest": g.flight_dest, "hotel": g.hotel, "nights": g.nights, "check_in": g.check_in, "check_out": g.check_out, 'expedia_price': expedia_price, 'jetblue_price': jetblue_price, 'savings': g.savings, 'advance_weeks': g.advance_weeks})
 
