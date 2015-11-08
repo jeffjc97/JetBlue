@@ -1,3 +1,4 @@
+//Allows injection of jQuery into Facebook's feed
 var script = document.createElement('script');
 script.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
 document.getElementsByTagName('head')[0].appendChild(script);
@@ -19,7 +20,13 @@ chrome.storage.sync.get('option', function(result) {
 		option = result['option'];
 })
 
+/*
+Runs on page load and every certain amount of scroll distance. Grabs all user content on the page and parses it for locations.
+If a location is found, the data is sent to ther server. If it matches a destination, that destination is offered. Otherwise,
+the destination is offered based on preference in the options.
+*/
 function injectAd(){
+	var placed = false;
 	$(".userContent").each(function() {
 		console.log($(this).innerHTML);
 		var knwlInstance = new Knwl('english');
@@ -28,8 +35,9 @@ function injectAd(){
 		for (var ii = 0; ii < places.length; ii++) {
 			for (var key in places[ii]) {
 				if (key !== 'found') {
-					if (key !== 'preview' && !$(this).closest("._5jmm").next().hasClass('jetblue-wrapper')) {
+					if (key !== 'preview' && !$(this).closest("._5jmm").next().hasClass('jetblue-wrapper') && !placed) {
 						console.log(key +" **** " + places[ii][key]);
+						placed = true;
 						// req = true;
 						obj = $(this);
 						chrome.runtime.sendMessage({airport:airports, option:option}, function(response) { 
@@ -84,73 +92,3 @@ $(document).ready(function(){
 		}
 	});
 });
-						// responseObj = {
-						// 	"img_url":"https://en.wikipedia.org/wiki/Boston#/media/File:Boston_Back_Bay_reflection.jpg",
-						// 	"city":"Boston",
-						// 	"price":"500",
-						// 	"date":"11/7/2015",
-						// 	"savings":"400"
-						// };
-
-						// $("<div class='jetblue-wrapper'>\
-						// <div class='header-text'>JetBlue Travel Suggestions</div>\
-						// <div class='jb jb-1'>\
-						// 	<img class='image' src='"+responseObj.img_url+"'>\
-						// 	<div class='loc'>"+responseObj.city+"</div>\
-						// 	<div class='price'>No more than "+responseObj.price+"</div>\
-						// </div>\
-						// <div class='jb jb-2'>\
-						// 	<img class='image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Egretta_garzetta_2015-06-17.jpg/1000px-Egretta_garzetta_2015-06-17.jpg'>\
-						// 	<div class='loc'>Jamaica</div>\
-						// 	<div class='price'>as low as $20</div>\
-						// </div>\
-						// <div class='jb jb-3'>\
-						// 	<img class='image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Egretta_garzetta_2015-06-17.jpg/1000px-Egretta_garzetta_2015-06-17.jpg'>\
-						// 	<div class='loc'>Japan</div>\
-						// 	<div class='price'>as low as $30</div>\
-						// </div>\
-						// </div>").insertAfter($(this).closest("._5jmm"));	
-	// last = $('._5jmm').last();
-	// if(!last.next().hasClass('jetblue-wrapper')) {
-	// 	console.log(airports);
-	// 	chrome.runtime.sendMessage({airport:airports}, function(response) { 
-	// 		if(response.status == "success") {
-	// 			console.log("DFSDFDS");
-	// 			result = response.result;
-	// 			console.log(result);
-	// 		}
-	// 		else {
-	// 			console.log(response.status);
-	// 			alert("uhoh");
-	// 		} 
-	// 	});
-		// $.ajax({
-		// 	url: url + airports,
-		// 	type: 'GET',
-		// 	dataType: 'jsonp',
-		// 	success: function(returned) {
-		// 		console.log(airports);
-		// 		console.log(returned);
-		// 		$("<div class='jetblue-wrapper'>\
-		// 		<div class='header-text'>JetBlue Travel Suggestions</div>\
-		// 		<div class='jb jb-1'>\
-		// 			<img class='image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Egretta_garzetta_2015-06-17.jpg/1000px-Egretta_garzetta_2015-06-17.jpg'>\
-		// 			<div class='loc'>Bahamas</div>\
-		// 			<div class='price'>as low as $50</div>\
-		// 		</div>\
-		// 		<div class='jb jb-2'>\
-		// 			<img class='image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Egretta_garzetta_2015-06-17.jpg/1000px-Egretta_garzetta_2015-06-17.jpg'>\
-		// 			<div class='loc'>Jamaica</div>\
-		// 			<div class='price'>as low as $20</div>\
-		// 		</div>\
-		// 		<div class='jb jb-3'>\
-		// 			<img class='image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Egretta_garzetta_2015-06-17.jpg/1000px-Egretta_garzetta_2015-06-17.jpg'>\
-		// 			<div class='loc'>Japan</div>\
-		// 			<div class='price'>as low as $30</div>\
-		// 		</div>\
-		// 		</div>").insertAfter(last);	
-		// 	},
-		// 	failure: function(returned) {
-		// 		alert("Failed!!!!");
-		// 	}
-		// });

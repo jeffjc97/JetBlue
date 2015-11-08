@@ -1,3 +1,7 @@
+/*
+Responsible for maintaining state of the extension. On interaction with the user will update the chrome storage object with relevant fields.
+*/
+
 document.addEventListener('DOMContentLoaded', function(){
 	var airports;
 	var option;
