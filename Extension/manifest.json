@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "JetBlue",
-  "description": "yhack swag 420 bish",
+  "name": "JetBlue Deals",
+  "description": "Get the best deals on trips to places you've always wanted to go!",
   "version": "1.0.0",
 
   "browser_action": {
