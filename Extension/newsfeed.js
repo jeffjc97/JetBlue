@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 multiples = 0;
 scroll = 1500;
-req = false;
+// req = false;
 
 var option;
 var airports;
@@ -28,9 +28,9 @@ function injectAd(){
 		for (var ii = 0; ii < places.length; ii++) {
 			for (var key in places[ii]) {
 				if (key !== 'found') {
-					if (key !== 'preview' && !$(this).closest("._5jmm").next().hasClass('jetblue-wrapper') && !req) {
+					if (key !== 'preview' && !$(this).closest("._5jmm").next().hasClass('jetblue-wrapper')) {
 						console.log(key +" **** " + places[ii][key]);
-						req = true;
+						// req = true;
 						obj = $(this);
 						chrome.runtime.sendMessage({airport:airports, option:option}, function(response) { 
 							if(response.status == "success") {
